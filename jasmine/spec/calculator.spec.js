@@ -1,4 +1,4 @@
-// spec/calculator2.spec.js
+// spec/calculator.spec.js
 
 describe("Calculator operations - Addition", function () {
     beforeEach(function() {
