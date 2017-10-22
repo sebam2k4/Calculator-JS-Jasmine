@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 100%;
+    font-family: sans-serif;
+    background-color: #ae9a88;
+}
+
+.brand {
+    margin-left: 32px;
+    color: #6d6655;
+    
+}
+.brand h1 {
+    font-weight: 400;
+    font-size: 2rem;
+}
+.calculator {
+    width: 300px;
+    min-height: auto;
+    background-color: #edede7;
+    margin: 100px auto;
+    overflow: auto;
+    border-radius: 5px;
+    border-bottom: 2px solid rgba(51, 51, 51, 0.745);
+    -webkit-box-shadow: 0px 4px 45px -11px rgba(3,3,3,1);
+    -moz-box-shadow: 0px 4px 45px -11px rgba(3,3,3,1);
+    box-shadow: 0px 4px 45px -11px rgba(3,3,3,1);
+}
+.display-box {
+    width: 230px;
+    border: 15px solid #d8dbd4;
+    border-bottom: 30px solid #d8dbd4;
+    border-radius: 2px;
+    margin: 10px auto 0 auto;
+}
+.display-box input {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #ccc6b4;
+    vertical-align: middle;
+    text-align: right;
+    font-size: 1.5rem;
+    color: #6d6655;
+}
+.buttons-box {
+    width: 240px;
+    margin: auto;
+    font-size: 0;   /* remove whitespace between buttons while using display:inline-block */
+    padding: 30px 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-align-content: space-around;
+    align-content: space-around;
+}
+button {
+    margin: 5px;
+    width: 50px;
+    height: 50px;
+    border: none; /* remove default button border */
+    border-bottom: 2px solid rgba(51, 51, 51, 0.745);
+    border-radius: 1rem;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+button:focus {
+    outline: none;
+}
+button:active {
+    border-bottom: none;
+}
+
+button.number {
+    background-color: #ccc6b4;
+    color: #6d6655;
+}
+button.operation {
+    background-color: #6d6655;
+    color: #ffffff;
+}
+button.operation.equal {
+    background-color: #f35d36;
+    color: #ffffff;
+}

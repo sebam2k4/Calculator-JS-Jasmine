@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <main>
+
+    <!-- CALCULATOR -->
+
+    <div class="calculator">
+      <header class="brand">
+        <h1>Calculator</h1>
+      </header>
+
+      <!-- DISPLAY -->
+
+      <div class="display-box">
+        <div class="display"><input type="text" readonly size="15" id="display"></div>
+      </div>
+
+
+      <!-- NUMBER BUTTONS -->
+
+      <div class="buttons-box" id="buttons">
+        <button class="operation" value="C" onclick="clearAll()">C</button>
+        <button class="operation" value="CE" onclick="ce()">CE</button>
+        <button class="operation" value=""></button>
+        <button class="operation" value="/" onclick="divide()">/</button>
+        <button class="number" value="7" onclick="getInput(this)">7</button>
+        <button class="number" value="8" onclick="getInput(this)">8</button>
+        <button class="number" value="9" onclick="getInput(this)">9</button>
+        <button class="operation" value="*" onclick="multiply()">x</button>
+        <button class="number" value="4" onclick="getInput(this)">4</button>
+        <button class="number" value="5" onclick="getInput(this)">5</button>
+        <button class="number" value="6" onclick="getInput(this)">6</button>
+        <button class="operation" value="-" onclick="subtract()">-</button>
+        <button class="number" value="1" onclick="getInput(this)">1</button>
+        <button class="number" value="2" onclick="getInput(this)">2</button>
+        <button class="number" value="3" onclick="getInput(this)">3</button>
+        <button class="operation" value="+" onclick="add()">+</button>
+        <button class="number" value="-" onclick="changeSign()">-/+</button>
+        <button class="number" value="0" onclick="getInput(this)">0</button>
+        <button class="number" value="." onclick="getInput(this)">.</button>
+        <button class="operation equal" value="=" onclick="equal()">=</button>
+      </div>
+
+    </div> <!-- END OF CALCULATOR -->
+  </main>
+
+  <script src="calculator.js"></script>
+</body>
+
+</html>
