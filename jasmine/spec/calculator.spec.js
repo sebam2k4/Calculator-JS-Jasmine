@@ -51,7 +51,6 @@ describe("Calculator operations - Addition", function () {
 });
 
 describe("Calculator operations - Subtraction", function () {
-
     beforeEach(function() {
         display_input = 0;
         inputs = [];
@@ -102,7 +101,6 @@ describe("Calculator operations - Subtraction", function () {
 });
 
 describe("Calculator operations - Multiplication", function () {
-    
     beforeEach(function() {
         display_input = 0;
         inputs = [];
@@ -169,7 +167,6 @@ describe("Calculator operations - Multiplication", function () {
 });
 
 describe("Calculator operations - Division", function () {
-    
     beforeEach(function() {
         display_input = 0;
         inputs = [];
@@ -228,7 +225,6 @@ describe("Calculator operations - Division", function () {
 });
 
 describe("Sample Calculation", function () {
-    
     beforeEach(function() {
         display_input = 0;
         inputs = [];
@@ -242,7 +238,7 @@ describe("Sample Calculation", function () {
         document.getElementById = jasmine.createSpy('HTML Element').and.returnValue(dummyElement);
     });
 
-    it("Should do the following operations in order (immediate execution logic): 3 + 7 -5 * 2 + 10 / 4 * 10 = 50 + (-25) + 5 * 2and return 60 as a result", function() {
+    it("Should do the following operations in order (immediate execution logic): 3 + 7 -5 * 2 + 10 / 4 * 10 = 50 + (-25) + 5 * 2 and return 60 as a result", function() {
         inputs = ["3"];
         add();
         inputs = ["7"];
