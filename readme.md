@@ -4,7 +4,7 @@ JavaScript calculator with Jasmine Unit Tests to make sure calculations are perf
 
 live demo: http://frail-pen.surge.sh/
 
-![JS Calculator Preview](preview.jpg)
+[![JS Calculator Preview](preview.jpg)](http://frail-pen.surge.sh/ "JavaScript Calculator")
 
 ### Getting the code set up on your computer
 1. Firstly you will need to clone this repository by running `git clone https://github.com/sebam2k4/stream1-project` command.
