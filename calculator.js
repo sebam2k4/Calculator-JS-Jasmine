@@ -1,95 +1,91 @@
 // Immediate execution calculator input logic
-
-var input = 0;
-var temp_inputs = [];
+var display_input = 0;
+var inputs = [];
 var total = 0;
 var operation = "";
-updateDisplay(input);
 var a = 0;
 var b;
 
 // get numeric input up to 13 digits long including decimals
 function getInput(button) {
     console.log(button);
-    if (temp_inputs.length > 12) {
+    if (inputs.length > 12) {
         clearAll();
         updateDisplay("Too Many Nums!");
     } else {
         if (button.value === ".") {
-            if (!temp_inputs.includes('.')) {
-                temp_inputs.push(button.value);
+            if (!inputs.includes('.')) {
+                inputs.push(button.value);
             }
         } else {
-            temp_inputs.push(button.value)
-            console.log(temp_inputs);  //test
-            input = Number(temp_inputs.join(''))
-            console.log(input, typeof input);  //test
-            updateDisplay(input);
+            inputs.push(button.value)
+            display_input = Number(inputs.join('')) //join numbers to update display
+            updateDisplay(display_input);
         }
     }
 }
 
 function add() {
-    if (temp_inputs.length !== 0) {
-        console.log("addition, before calculate() num input: " + input + ", total: " + total);  //test
+    if (inputs.length !== 0) {
         calculate();
-        console.log("addition, curent num input: " + input + ", total: " + total);  //test
         updateDisplay(total);
     }
     operation = "+";
 }
 
+// not working properly
 function equal() {
     calculate();
     updateDisplay(total);
     operation = "";  // comment out if you want to repeat last operation on following equal button press
-    temp_inputs = [];
+    inputs = [];
   }
 
 function changeSign() {
-    input = -input;
-    updateDisplay(input);
+    if (Number(inputs.join('')) != 0) {
+        inputs[0] = -inputs[0];
+        display_input = -display_input;
+        updateDisplay(display_input);
+    } else {
+        total = -total; // doesn't work until i press equal sign
+        calculate();  //fix?
+        updateDisplay(total);
+    }
 }
 
 function subtract() {
-    if (temp_inputs.length !== 0) {
-        console.log("subtraction, before calculate() num input: " + input + ", total: " + total);  //test
+    if (inputs.length !== 0) {
         calculate();
-        console.log("subtraction, curent num input: " + input + ", total: " + total);  //test
         updateDisplay(total);
     }
     operation = "-";
 }
 
 function multiply() {
-    if (temp_inputs.length !== 0) {
-        console.log("multiply, before calculate() num input: " + input + ", total: " + total);  //test
+    if (inputs.length !== 0) {
         calculate();
-        console.log("multiply, curent num input: " + input + ", total: " + total);  //test
         updateDisplay(total);
     }
     operation = "*";
 }
 
 function divide() {
-    if (temp_inputs.length !== 0) {
-        console.log("divide, before calculate() num input: " + input + ", total: " + total);  //test
+    if (inputs.length !== 0) {
         calculate();
-        console.log("divide, curent num input: " + input + ", total: " + total);  //test
         updateDisplay(total);
     }
     operation = "/";
 }
 
 function calculate() {
-b = input;
+b = Number(inputs.join(''));
 if (operation == '') {
-    if (temp_inputs.length == 0 && total == 0) {
+    if (inputs.length == 0 && total == 0) {
         a = 0;
-    } else if (temp_inputs.length == 0) {
+    } else if (inputs.length == 0) {
         a = total;
     } else {
-        a = input;
+        a = Number(inputs.join(''));
         total = a;
     }
 } else if (operation == '+') {
@@ -106,22 +102,25 @@ if (operation == '') {
         total = a / b;
     }
 }
-temp_inputs = [];
+inputs = [];
 a = total;
+display_input = 0;
 }
 
 // clear everything
 function clearAll() {
-    input = 0;
-    temp_inputs = [];
+    display_input = 0;
+    inputs = [];
     total = 0;
     operation = "";
+    a = 0;
+    b = 0;
     updateDisplay(total);
 }
 
 // clear current input
 function ce() {
-    temp_inputs = [];
+    inputs = [];
     updateDisplay("0");
 }
 
