@@ -1,9 +1,9 @@
 // JavaScript Calculator with Jasmine tests.
-// Note: This calculator uses the immediate execution input method
+// Note: This calculator uses immediate execution input method
 
 // Global variables
 var display_input = 0;
-var inputs = [];
+var inputs = [];  // raw inputs stored in an array
 var total = 0;
 var operation = "";
 var memory = 0;
@@ -13,52 +13,32 @@ var current_input;
 function getInput(button) {
     console.log(button); // test - show html of the button that's pressed
     
-    // capture decimal point only once
     if (button.value === '.') {
+        // capture decimal point only once
         if (!inputs.includes('.')) {
-            inputs.push(button.value);
+            inputs.push(button.value); // add to raw inputs array
         }
     } else {
-        inputs.push(button.value)
-        display_input = +(inputs.join('')) //join string numbers and convert to a number
+        // capture numbers
+        inputs.push(button.value);
+
+        //convert to number for calc display
+        display_input = +(inputs.join('')) //join string numbers in the array and convert to a number
         updateDisplay(display_input);
     }
-    
 }
 
+// Operations: add, subtract, multiply, and divide
 function add() {
     if (inputs.length !== 0) {
         calculate();
-        updateDisplay(total);
     }
-    operation = "+";
-}
-
-// not working properly
-function equal() {
-    calculate();
-    updateDisplay(total);
-    operation = "";  // comment out if you want to repeat last operation on following equal button press
-    inputs = [];
-  }
-
-// Change Sign -/+ (toggle positive/negative number)
-function changeSign() {
-    if (+(inputs.join('')) != 0) {  //join string numbers and convert to a number
-        inputs[0] = -inputs[0];
-        display_input = -display_input;
-        updateDisplay(display_input);
-    } else {
-        total = -total;
-        calculate(); // need to run function to update the memory (a)
-        updateDisplay(total);
-    }
+    operation = "+"; // assign operation only after the first input
 }
 
 function subtract() {
     if (inputs.length !== 0) {
         calculate();
-
     }
     operation = "-";
 }
@@ -66,7 +46,6 @@ function subtract() {
 function multiply() {
     if (inputs.length !== 0) {
         calculate();
-
     }
     operation = "*";
 }
@@ -74,22 +53,45 @@ function multiply() {
 function divide() {
     if (inputs.length !== 0) {
         calculate();
-        
     }
     operation = "/";
 }
 
+// Change Sign -/+ (toggle positive/negative number)
+function changeSign() {
+    if (+(inputs.join('')) != 0) {  // join string numbers and convert to a number
+        inputs[0] = -inputs[0];
+        display_input = -display_input;
+        updateDisplay(-display_input);
+    } else {
+        total = -total;
+        calculate();  // need to run function to update the memory
+    }
+}
+
+// Get result
+function equal() {
+    calculate();
+    updateDisplay(total);
+    operation = "";  // prevents repeating last operation on subsequent equal button presses.
+    inputs = [];
+  }
+
 function calculate() {
-current_input = +(inputs.join('')); // convert inputs to number
+current_input = +(inputs.join('')); // join string numbers and convert to a number
+
+// Handling the very first calculation 
+// AND handling operation and equal button presses when there is no numeric input.
 if (operation == '') {
     if (inputs.length == 0 && total == 0) {
         memory = 0;
     } else if (inputs.length == 0) {
-        memory = total;
+        memory = total;  // if no new input is selected, store total in memory.
     } else {
-        memory = +(inputs.join(''));
-        total = memory;
+        total = +(inputs.join(''));  // if input made, store it in memory for the first calculation
     }
+
+// perform calculations
 } else if (operation == '+') {
     total = +(memory + current_input).toFixed(12);
 } else if (operation == '-') {
@@ -104,14 +106,17 @@ if (operation == '') {
         total = +(memory / current_input).toFixed(12);
     }
 }
+// Test - show values for all variables in console
 console.log("raw inputs:", inputs, "|",
             "total:", total, "|",
             "operation:", operation, "|",
             "memory:", memory, "|",
             "current_input:", current_input);
 updateDisplay(total);
+memory = total; // update memory for next operation
+
+// reset raw inputs and display_input for next operations:
 inputs = [];
-memory = total;
 display_input = 0;
 }
 
@@ -134,7 +139,7 @@ function CE() {
 
 // update display with input and output numbers
 function updateDisplay(output) {
-    // For numbers longer than 13 digits, use exponential notation
+    // For numbers longer than 13 digits, use exponential notation to display nubmer
     if (typeof output === 'number' && output.toString().length > 12) {
         document.getElementById("display").value = output.toExponential(7);  //convert to exponential notation with 7 digit precision.
         console.log(total, typeof total);
