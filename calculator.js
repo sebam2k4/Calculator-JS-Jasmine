@@ -9,20 +9,16 @@ var b;
 // Allow numeric input up to 13 digits long or up to 11 decimals.
 function getInput(button) {
     console.log(button);
-    if (inputs.length > 12) {
-        clearAll();
-        updateDisplay("Too Many Nums!");
-    } else {
-        if (button.value === '.') {
-            if (!inputs.includes('.')) {
-                inputs.push(button.value);
-            }
-        } else {
-            inputs.push(button.value)
-            display_input = +(inputs.join('')) //join string numbers and convert to a number
-            updateDisplay(display_input);
+    if (button.value === '.') {
+        if (!inputs.includes('.')) {
+            inputs.push(button.value);
         }
+    } else {
+        inputs.push(button.value)
+        display_input = +(inputs.join('')) //join string numbers and convert to a number
+        updateDisplay(display_input);
     }
+    
 }
 
 function add() {
@@ -132,6 +128,12 @@ function ce() {
 }
 
 function updateDisplay(output) {
-    document.getElementById("display").value = output;
+    if (typeof output === 'number' && output.toString().length > 12) {
+        document.getElementById("display").value = output.toExponential(7);  //convert to exponential notation with 7 digit precision.
+        console.log(total, typeof total);
+        console.log(inputs, display_input)
+    } else {
+        document.getElementById("display").value = output;
+    }
 
 }
