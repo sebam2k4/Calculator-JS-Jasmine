@@ -1,14 +1,19 @@
-// Immediate execution calculator input logic
+// JavaScript Calculator with Jasmine tests.
+// Note: This calculator uses the immediate execution input method
+
+// Global variables
 var display_input = 0;
 var inputs = [];
 var total = 0;
 var operation = "";
-var a = 0;
-var b;
+var memory = 0;
+var current_input;
 
-// Allow numeric input up to 13 digits long or up to 11 decimals.
+// Capture numeric inputs.
 function getInput(button) {
-    console.log(button);
+    console.log(button); // test - show html of the button that's pressed
+    
+    // capture decimal point only once
     if (button.value === '.') {
         if (!inputs.includes('.')) {
             inputs.push(button.value);
@@ -37,6 +42,7 @@ function equal() {
     inputs = [];
   }
 
+// Change Sign -/+ (toggle positive/negative number)
 function changeSign() {
     if (+(inputs.join('')) != 0) {  //join string numbers and convert to a number
         inputs[0] = -inputs[0];
@@ -44,7 +50,7 @@ function changeSign() {
         updateDisplay(display_input);
     } else {
         total = -total;
-        calculate(); // need to run function to update the current_total (a)
+        calculate(); // need to run function to update the memory (a)
         updateDisplay(total);
     }
 }
@@ -74,39 +80,38 @@ function divide() {
 }
 
 function calculate() {
-b = +(inputs.join('')); // convert inputs to number
+current_input = +(inputs.join('')); // convert inputs to number
 if (operation == '') {
     if (inputs.length == 0 && total == 0) {
-        a = 0;
+        memory = 0;
     } else if (inputs.length == 0) {
-        a = total;
+        memory = total;
     } else {
-        a = +(inputs.join(''));
-        total = a;
+        memory = +(inputs.join(''));
+        total = memory;
     }
 } else if (operation == '+') {
-    total = +(a + b).toFixed(12);
+    total = +(memory + current_input).toFixed(12);
 } else if (operation == '-') {
-    total = +(a - b).toFixed(12);
+    total = +(memory - current_input).toFixed(12);
 } else if (operation == '*') {
-    total = +(a * b).toFixed(12);
+    total = +(memory * current_input).toFixed(12);
 } else if (operation == '/') {
-    if (b == 0) {
+    if (current_input == 0) {
         clearAll();
         total = "error: div by 0!";
     } else {
-        total = +(a / b).toFixed(12);
+        total = +(memory / current_input).toFixed(12);
     }
 }
-console.log(display_input,
-            inputs,
-            total,
-            operation,
-            a,
-            b);
+console.log("raw inputs:", inputs, "|",
+            "total:", total, "|",
+            "operation:", operation, "|",
+            "memory:", memory, "|",
+            "current_input:", current_input);
 updateDisplay(total);
 inputs = [];
-a = total;
+memory = total;
 display_input = 0;
 }
 
@@ -116,18 +121,20 @@ function clearAll() {
     inputs = [];
     total = 0;
     operation = "";
-    a = 0;
-    b = 0;
+    memory = 0;
+    current_input = 0;
     updateDisplay(total);
 }
 
-// clear current input
-function ce() {
+// clear last entry
+function CE() {
     inputs = [];
     updateDisplay("0");
 }
 
+// update display with input and output numbers
 function updateDisplay(output) {
+    // For numbers longer than 13 digits, use exponential notation
     if (typeof output === 'number' && output.toString().length > 12) {
         document.getElementById("display").value = output.toExponential(7);  //convert to exponential notation with 7 digit precision.
         console.log(total, typeof total);

@@ -1,4 +1,4 @@
-// spec/calculator.spec.js
+// JavaScript Calculator Jasmine Tests
 
 describe("Calculator operations - Addition:", function () {
     beforeEach(function() {
@@ -6,8 +6,8 @@ describe("Calculator operations - Addition:", function () {
         inputs = [];
         total = 0;
         operation = "";
-        a = 0;
-        b = 0;
+        memory = 0;
+        current_input = 0;
         // create dummy element so updateDisplay() function doesn't cause
         // TypeError: Cannot set property 'value' of null
         var dummyElement = document.createElement('span');
@@ -64,8 +64,8 @@ describe("Calculator operations - Subtraction:", function () {
         inputs = [];
         total = 0;
         operation = "";
-        a = 0;
-        b = 0;
+        memory = 0;
+        current_input = 0;
         // create dummy element so updateDisplay() function doesn't cause
         // TypeError: Cannot set property 'value' of null
         var dummyElement = document.createElement('span');
@@ -114,8 +114,8 @@ describe("Calculator operations - Multiplication:", function () {
         inputs = [];
         total = 0;
         operation = "";
-        a = 0;
-        b = 0;
+        memory = 0;
+        current_input = 0;
         // create dummy element so updateDisplay() function doesn't cause
         // TypeError: Cannot set property 'value' of null
         var dummyElement = document.createElement('span');
@@ -180,8 +180,8 @@ describe("Calculator operations - Division:", function () {
         inputs = [];
         total = 0;
         operation = "";
-        a = 0;
-        b = 0;
+        memory = 0;
+        current_input = 0;
         // create dummy element so updateDisplay() function doesn't cause
         // TypeError: Cannot set property 'value' of null
         var dummyElement = document.createElement('span');
@@ -238,15 +238,15 @@ describe("Sample Calculation:", function () {
         inputs = [];
         total = 0;
         operation = "";
-        a = 0;
-        b = 0;
+        memory = 0;
+        current_input = 0;
         // create dummy element so updateDisplay() function doesn't cause
         // TypeError: Cannot set property 'value' of null
         var dummyElement = document.createElement('span');
         document.getElementById = jasmine.createSpy('HTML Element').and.returnValue(dummyElement);
     });
 
-    it("Should do the following operations in order (immediate execution logic): 3 + 7 -5 * 2 + 10 / 4 * 10 = 50 + (-25) + 5 * 2 and return 60 as a result", function() {
+    it("Should do the following operations in order (immediate execution calculator logic): 3 + 7 -5 * 2 + 10 / 4 * 10 = 50 + (-25) + 5 * 2 and return 60 as a result", function() {
         inputs = ["3"];
         add();
         inputs = ["7"];
