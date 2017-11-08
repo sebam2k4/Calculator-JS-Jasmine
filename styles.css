@@ -21,7 +21,7 @@ body {
     width: 300px;
     min-height: auto;
     background-color: #edede7;
-    margin: 100px auto;
+    margin: 100px auto 15px auto;
     overflow: auto;
     border-radius: 5px;
     border-bottom: 2px solid rgba(51, 51, 51, 0.745);
@@ -94,4 +94,26 @@ button.operation {
 button.operation.equal {
     background-color: #f35d36;
     color: #ffffff;
+}
+
+footer {
+    text-align: center;
+}
+footer p {
+    margin: .125rem 0;
+}
+footer p span {
+    font-weight: 400;
+    opacity: 0.6;
+    font-size: .75rem;
+}
+footer p a {
+    text-decoration: none;
+    font-size: .875rem;
+    font-weight: 700;
+    color: black;
+    opacity: 0.6;
+}
+footer p a:hover {
+    opacity: 1;
 }
