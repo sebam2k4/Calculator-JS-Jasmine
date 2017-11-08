@@ -11,11 +11,17 @@ body {
 .brand {
     margin-left: 32px;
     color: #6d6655;
-    
 }
 .brand h1 {
     font-weight: 400;
     font-size: 2rem;
+}
+.brand .model {
+    font-size: 1rem;
+    font-style: italic;
+}
+.brand .orange {
+    color: #f35d36;
 }
 .calculator {
     width: 300px;
