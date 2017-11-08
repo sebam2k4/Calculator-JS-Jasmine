@@ -136,23 +136,9 @@ footer p a:hover {
     .buttons-box {
         width: 100%;
         margin: auto;
-        font-size: 0;   /* remove whitespace between buttons while using display:inline-block */
-        padding: 30px 0;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-justify-content: flex-start;
-        justify-content: flex-start;
-        -webkit-flex-flow: row wrap;
-        flex-flow: row wrap;
-        -webkit-align-content: space-between;
-        align-content: space-between;
     }
     button {
         margin: 2%;
         width: 21%;
     }
-
 }
