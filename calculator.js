@@ -6,20 +6,20 @@ var operation = "";
 var a = 0;
 var b;
 
-// get numeric input up to 13 digits long including decimals
+// Allow numeric input up to 13 digits long or up to 11 decimals.
 function getInput(button) {
     console.log(button);
     if (inputs.length > 12) {
         clearAll();
         updateDisplay("Too Many Nums!");
     } else {
-        if (button.value === ".") {
+        if (button.value === '.') {
             if (!inputs.includes('.')) {
                 inputs.push(button.value);
             }
         } else {
             inputs.push(button.value)
-            display_input = Number(inputs.join('')) //join numbers to update display
+            display_input = +(inputs.join('')) //join string numbers and convert to a number
             updateDisplay(display_input);
         }
     }
@@ -42,13 +42,13 @@ function equal() {
   }
 
 function changeSign() {
-    if (Number(inputs.join('')) != 0) {
+    if (+(inputs.join('')) != 0) {  //join string numbers and convert to a number
         inputs[0] = -inputs[0];
         display_input = -display_input;
         updateDisplay(display_input);
     } else {
-        total = -total; // doesn't work until i press equal sign
-        calculate();  //fix?
+        total = -total;
+        calculate(); // need to run function to update the current_total (a)
         updateDisplay(total);
     }
 }
@@ -56,7 +56,7 @@ function changeSign() {
 function subtract() {
     if (inputs.length !== 0) {
         calculate();
-        updateDisplay(total);
+
     }
     operation = "-";
 }
@@ -64,7 +64,7 @@ function subtract() {
 function multiply() {
     if (inputs.length !== 0) {
         calculate();
-        updateDisplay(total);
+
     }
     operation = "*";
 }
@@ -72,36 +72,43 @@ function multiply() {
 function divide() {
     if (inputs.length !== 0) {
         calculate();
-        updateDisplay(total);
+        
     }
     operation = "/";
 }
 
 function calculate() {
-b = Number(inputs.join(''));
+b = +(inputs.join('')); // convert inputs to number
 if (operation == '') {
     if (inputs.length == 0 && total == 0) {
         a = 0;
     } else if (inputs.length == 0) {
         a = total;
     } else {
-        a = Number(inputs.join(''));
+        a = +(inputs.join(''));
         total = a;
     }
 } else if (operation == '+') {
-    total = a + b;
+    total = +(a + b).toFixed(12);
 } else if (operation == '-') {
-    total = a - b;
+    total = +(a - b).toFixed(12);
 } else if (operation == '*') {
-    total = a * b;
+    total = +(a * b).toFixed(12);
 } else if (operation == '/') {
     if (b == 0) {
         clearAll();
         total = "error: div by 0!";
     } else {
-        total = a / b;
+        total = +(a / b).toFixed(12);
     }
 }
+console.log(display_input,
+            inputs,
+            total,
+            operation,
+            a,
+            b);
+updateDisplay(total);
 inputs = [];
 a = total;
 display_input = 0;
@@ -126,4 +133,5 @@ function ce() {
 
 function updateDisplay(output) {
     document.getElementById("display").value = output;
+
 }

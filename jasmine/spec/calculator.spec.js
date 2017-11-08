@@ -1,6 +1,6 @@
 // spec/calculator.spec.js
 
-describe("Calculator operations - Addition", function () {
+describe("Calculator operations - Addition:", function () {
     beforeEach(function() {
         display_input = 0;
         inputs = [];
@@ -48,9 +48,17 @@ describe("Calculator operations - Addition", function () {
         expect(total).toEqual(0);
     });
 
+    it("0.1 + 0.2 should equal 0.3 (Resolve floating point precision issue with operations on decimal numbers)", function() {
+        inputs = ["0.1"];
+        add();
+        inputs = ["0.2"];
+        equal();
+        expect(total).toEqual(0.3);
+    });
+
 });
 
-describe("Calculator operations - Subtraction", function () {
+describe("Calculator operations - Subtraction:", function () {
     beforeEach(function() {
         display_input = 0;
         inputs = [];
@@ -100,7 +108,7 @@ describe("Calculator operations - Subtraction", function () {
 
 });
 
-describe("Calculator operations - Multiplication", function () {
+describe("Calculator operations - Multiplication:", function () {
     beforeEach(function() {
         display_input = 0;
         inputs = [];
@@ -166,7 +174,7 @@ describe("Calculator operations - Multiplication", function () {
     });
 });
 
-describe("Calculator operations - Division", function () {
+describe("Calculator operations - Division:", function () {
     beforeEach(function() {
         display_input = 0;
         inputs = [];
@@ -224,7 +232,7 @@ describe("Calculator operations - Division", function () {
     });
 });
 
-describe("Sample Calculation", function () {
+describe("Sample Calculation:", function () {
     beforeEach(function() {
         display_input = 0;
         inputs = [];
