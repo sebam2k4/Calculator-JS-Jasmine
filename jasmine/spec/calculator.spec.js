@@ -14,14 +14,7 @@ describe("Calculator operations - Addition:", function () {
         document.getElementById = jasmine.createSpy('HTML Element').and.returnValue(dummyElement);
     });
 
-    it("should add a number", function() {
-        add();
-        inputs = ["5"];
-        equal();
-        expect(total).toEqual(5);
-    });
-
-    it("should add two numbers together", function() {
+    it("should add two numbers together, 5+5 = 10", function() {
         inputs = ["5"];
         add();
         inputs = ["5"];
@@ -29,7 +22,7 @@ describe("Calculator operations - Addition:", function () {
         expect(total).toEqual(10);
     });
 
-    it("should add two negative numbers", function() {
+    it("should add two negative numbers, (-5)+(-55) = -60", function() {
         inputs = ["5"];
         changeSign();
         add();
@@ -39,7 +32,7 @@ describe("Calculator operations - Addition:", function () {
         expect(total).toEqual(-60);
     });
 
-    it("should add a negative and a positive number", function() {
+    it("should add a negative and a positive number, (-2)+2 = 0", function() {
         inputs = ["2"]
         changeSign();
         add();
@@ -72,14 +65,7 @@ describe("Calculator operations - Subtraction:", function () {
         document.getElementById = jasmine.createSpy('HTML Element').and.returnValue(dummyElement);
     });
 
-    it("should subtract a number", function() {
-        subtract();
-        inputs = ["1","0"];
-        equal();
-        expect(total).toEqual(-10);
-    });
-
-    it("should subtract two numbers", function() {
+    it("should subtract two numbers, 5-5 = 0", function() {
         inputs = ["5"];
         subtract();
         inputs = ["5"];
@@ -87,7 +73,7 @@ describe("Calculator operations - Subtraction:", function () {
         expect(total).toEqual(0);
     });
 
-    it("should subtract two negative numbers", function() {
+    it("should subtract two negative numbers, (-5)-(-5) = 0", function() {
         inputs = ["5"];
         changeSign();
         subtract();
@@ -97,7 +83,7 @@ describe("Calculator operations - Subtraction:", function () {
         expect(total).toEqual(0);
     });
 
-    it("should subtract a negative and a positive number", function() {
+    it("should subtract a negative and a positive number, (-5)-5 = -10", function() {
         inputs = ["5"];
         changeSign();
         subtract();
@@ -122,7 +108,7 @@ describe("Calculator operations - Multiplication:", function () {
         document.getElementById = jasmine.createSpy('HTML Element').and.returnValue(dummyElement);
     });
 
-    it("should multiply two numbers together", function() {
+    it("should multiply two numbers together, 2*10 = 20", function() {
         inputs = ["2"];
         multiply();
         inputs = ["1","0"];
@@ -130,7 +116,7 @@ describe("Calculator operations - Multiplication:", function () {
         expect(total).toEqual(20);
     });
 
-    it("should multiply by a negative number and return a negative number", function() {
+    it("should multiply by a negative number and return a negative number, 2*(-10) = -20", function() {
         inputs = ["2"];
         multiply();
         inputs = ["1","0"];
@@ -139,7 +125,7 @@ describe("Calculator operations - Multiplication:", function () {
         expect(total).toEqual(-20);
     });
 
-    it("should return 0 when multiplying by 0", function() {
+    it("should return 0 when multiplying by 0, 200/0 = 0", function() {
         inputs = ["2","0","0"];
         multiply();
         inputs = ["0"];
@@ -147,7 +133,7 @@ describe("Calculator operations - Multiplication:", function () {
         expect(total).toEqual(0);
     });
 
-    it("should multiply by a decimal number and return a decimal number", function() {
+    it("should multiply by a decimal number and return a decimal number, 5*(0.5) = 2.5", function() {
         inputs = ["5"];
         multiply();
         inputs = [".","5"];
@@ -155,7 +141,7 @@ describe("Calculator operations - Multiplication:", function () {
         expect(total).toEqual(2.5);
     });
 
-    it("should multiply by a decimal number and return a whole number", function() {
+    it("should multiply by a decimal number and return a whole number, 10*(0.5) = 5", function() {
         inputs = ["10"];
         multiply();
         inputs = [".","5"];
@@ -163,7 +149,7 @@ describe("Calculator operations - Multiplication:", function () {
         expect(total).toEqual(5);
     });
 
-    it("should multiply by three numbers in a chain", function() {
+    it("should multiply by three numbers in a chain, 10*(0.5)*3 = 15", function() {
         inputs = ["10"];
         multiply();
         inputs = [".","5"];
@@ -188,7 +174,7 @@ describe("Calculator operations - Division:", function () {
         document.getElementById = jasmine.createSpy('HTML Element').and.returnValue(dummyElement);
     });
 
-    it("should divide by a number and return a whole number", function() {
+    it("should divide by a number and return a whole number, 6/2 = 3", function() {
         inputs = ["6"];
         divide();
         inputs = ["2"];
@@ -196,7 +182,7 @@ describe("Calculator operations - Division:", function () {
         expect(total).toEqual(3);
     });
 
-    it("should divide by a number and return a decimal number", function() {
+    it("should divide by a number and return a decimal number, 5/2 = 2.5", function() {
         inputs = ["5"];
         divide();
         inputs = ["2"];
@@ -204,7 +190,7 @@ describe("Calculator operations - Division:", function () {
         expect(total).toEqual(2.5);
     });
 
-    it("should divide by a negative number and return a negative number", function() {
+    it("should divide by a negative number and return a negative number, 6/(-2) = -3", function() {
         inputs = ["6"];
         divide();
         inputs = ["2"];
@@ -221,7 +207,7 @@ describe("Calculator operations - Division:", function () {
         expect(total).toBe("error: div by 0!");
     });
 
-    it("should divide by two numbers in a chain", function() {
+    it("should divide by two numbers in a chain, 6/2/3 = 1", function() {
         inputs = ["6"];
         divide();
         inputs = ["2"];
