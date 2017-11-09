@@ -1,4 +1,4 @@
-#JavaScript Calculator
+# JavaScript Calculator
 
 JavaScript calculator with Jasmine Unit Tests to make sure calculations are performed correctly. This calculator uses immediate execution logic.
 
@@ -12,7 +12,3 @@ live demo: http://frail-pen.surge.sh/
 3. open /jasmine/SpecRunner.html to run Jasmine tests
 4. modify any way you want.
 5. Enjoy!
-
-### To Do:
-- add unit tests for input and output
-- Add Much Wow! ;)
