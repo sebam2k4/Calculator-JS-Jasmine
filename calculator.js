@@ -153,7 +153,7 @@ function updateDisplay(output) {
 // For a little bit of fun when performing your complicated calculations on this amazing Calculator5001e
 // winky smiley face:
 function much_wow() {
-    var random_number = Math.floor(Math.random() * 4) + 1
+    var random_number = Math.floor(Math.random() * 5) + 1
     switch (random_number) {
         case 1:
             updateDisplay("much WOW!")
