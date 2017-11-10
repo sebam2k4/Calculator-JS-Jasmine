@@ -2,7 +2,6 @@
 // Note: This calculator uses immediate execution input method
 
 // Global variables
-var display_input = 0;
 var inputs = [];  // raw inputs stored in an array
 var total = 0;
 var operation = "";
@@ -43,8 +42,8 @@ function getInput() {
         inputs.push(this.value);
 
         //convert to number for calc display
-        display_input = +(inputs.join('')) //join string numbers in the array and convert to a number
-        updateDisplay(display_input);
+        current_input = +(inputs.join('')) //join string numbers in the array and convert to a number
+        updateDisplay(current_input);
     }
 }
 
@@ -81,12 +80,10 @@ function divide() {
 function changeSign() {
     if (+(inputs.join('')) != 0) {  // join string numbers and convert to a number
         inputs[0] = -inputs[0];
-        display_input = -display_input;
-        console.log("test")
-        updateDisplay(-display_input);
+        current_input = +(inputs.join(''));
+        updateDisplay(current_input);
     } else {
         total = -total;
-        console.log("test2")
         calculate();  // need to run function to update the memory
     }
 }
@@ -137,14 +134,13 @@ console.log("raw inputs:", inputs, "|",
 updateDisplay(total);
 memory = total; // update memory for next operation
 
-// reset raw inputs and display_input for next operations:
+// reset raw inputs and current_input for next operations:
 inputs = [];
-display_input = 0;
+current_input = 0;
 }
 
 // clear everything
 function clearAll() {
-    display_input = 0;
     inputs = [];
     total = 0;
     operation = "";
