@@ -9,18 +9,38 @@ var operation = "";
 var memory = 0;
 var current_input;
 
+// Event Listeners - try getting this into a for or foreach loop?
+document.getElementById('subtract').addEventListener('click', subtract);
+document.getElementById('add').addEventListener('click', add);
+document.getElementById('divide').addEventListener('click', divide);
+document.getElementById('multiply').addEventListener('click', multiply);
+document.getElementById('equal').addEventListener('click', equal);
+document.getElementById('clearAll').addEventListener('click', clearAll);
+document.getElementById('ce').addEventListener('click', CE);
+document.getElementById('changeSign').addEventListener('click', changeSign);
+document.getElementById('muchWow').addEventListener('click', muchWow);
+document.getElementById('number1').addEventListener('click', getInput);
+document.getElementById('number2').addEventListener('click', getInput);
+document.getElementById('number3').addEventListener('click', getInput);
+document.getElementById('number4').addEventListener('click', getInput);
+document.getElementById('number5').addEventListener('click', getInput);
+document.getElementById('number6').addEventListener('click', getInput);
+document.getElementById('number7').addEventListener('click', getInput);
+document.getElementById('number8').addEventListener('click', getInput);
+document.getElementById('number9').addEventListener('click', getInput);
+document.getElementById('decimalPoint').addEventListener('click', getInput);
+
 // Capture numeric inputs.
-function getInput(button) {
-    console.log(button); // test - show html of the button that's pressed
-    
-    if (button.value === '.') {
+function getInput() {
+    console.log(this.value); // test - show value of the button that's pressed
+    if (this.value === '.') {
         // capture decimal point only once
         if (!inputs.includes('.')) {
-            inputs.push(button.value); // add to raw inputs array
+            inputs.push(this.value); // add to raw inputs array
         }
     } else {
         // capture numbers
-        inputs.push(button.value);
+        inputs.push(this.value);
 
         //convert to number for calc display
         display_input = +(inputs.join('')) //join string numbers in the array and convert to a number
@@ -62,9 +82,11 @@ function changeSign() {
     if (+(inputs.join('')) != 0) {  // join string numbers and convert to a number
         inputs[0] = -inputs[0];
         display_input = -display_input;
+        console.log("test")
         updateDisplay(-display_input);
     } else {
         total = -total;
+        console.log("test2")
         calculate();  // need to run function to update the memory
     }
 }
@@ -142,17 +164,14 @@ function updateDisplay(output) {
     // For numbers longer than 13 digits, use exponential notation to display nubmer
     if (typeof output === 'number' && output.toString().length > 12) {
         document.getElementById("display").value = output.toExponential(7);  //convert to exponential notation with 7 digit precision.
-        console.log(total, typeof total);
-        console.log(inputs, display_input)
     } else {
         document.getElementById("display").value = output;
     }
-
 }
 
 // For a little bit of fun when performing your complicated calculations on this amazing Calculator5001e
 // winky smiley face:
-function much_wow() {
+function muchWow() {
     var random_number = Math.floor(Math.random() * 5) + 1
     switch (random_number) {
         case 1:
