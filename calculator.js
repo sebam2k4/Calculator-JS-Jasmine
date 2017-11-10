@@ -1,6 +1,6 @@
 // JavaScript Calculator with Jasmine tests.
 // Note: This calculator uses immediate execution input method
-
+(function() {
 // Global variables
 var inputs = [];  // raw inputs stored in an array
 var total = 0;
@@ -188,3 +188,4 @@ function muchWow() {
     }
 
 }
+}());
