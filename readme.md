@@ -12,3 +12,6 @@ live demo: http://frail-pen.surge.sh/
 3. open /jasmine/SpecRunner.html to run Jasmine tests
 4. modify any way you want.
 5. Enjoy!
+
+Note to self:
+Try converting the code to use a Calculator object.
