@@ -30,6 +30,7 @@ document.getElementById('number6').addEventListener('click', getInput);
 document.getElementById('number7').addEventListener('click', getInput);
 document.getElementById('number8').addEventListener('click', getInput);
 document.getElementById('number9').addEventListener('click', getInput);
+document.getElementById('number0').addEventListener('click', getInput);
 document.getElementById('decimalPoint').addEventListener('click', getInput);
 
 // Capture numeric inputs.
